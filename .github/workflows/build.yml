@@ -18,5 +18,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
-        working-directory: ./RestAssuredTests
-        run: mvn -B package --file pom.xml -DskipTests=true
+        run: mvn test -DskipTests=true

@@ -29,9 +29,7 @@ public class BaseTest {
         CalculatorPage calculatorPage = new CalculatorPage(driver);
         calculatorPage.clear();
     }
-
-
-
+    
     @AfterClass
     public void teardown() {
         driver.quit();

@@ -23,6 +23,9 @@ public class CalculatorPage {
     @FindBy(name = "divide")
     private WebElement divideBtn;
 
+    @FindBy(name = "subtract")
+    private WebElement subtractBtn;
+
     @FindBy(name = "clearButton")
     private WebElement clearBtn;
 
@@ -61,5 +64,13 @@ public class CalculatorPage {
 
     public void clear() {
         clearBtn.click();
+    }
+
+    public String subtract(String a, String b) {
+        displayInput.sendKeys(a);
+        subtractBtn.click();
+        displayInput.sendKeys(b);
+        calculateBtn.click();
+        return getDisplayContent();
     }
 }

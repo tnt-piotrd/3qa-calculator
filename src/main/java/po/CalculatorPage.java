@@ -20,6 +20,12 @@ public class CalculatorPage {
     @FindBy(name = "multiply")
     private WebElement multiplyBtn;
 
+    @FindBy(name = "divide")
+    private WebElement divideBtn;
+
+    @FindBy(name = "clearButton")
+    private WebElement clearBtn;
+
     public CalculatorPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -43,5 +49,17 @@ public class CalculatorPage {
         displayInput.sendKeys(b);
         calculateBtn.click();
         return getDisplayContent();
+    }
+
+    public String divide(String a, String b) {
+        displayInput.sendKeys(a);
+        divideBtn.click();
+        displayInput.sendKeys(b);
+        calculateBtn.click();
+        return getDisplayContent();
+    }
+
+    public void clear() {
+        clearBtn.click();
     }
 }

@@ -5,6 +5,7 @@
         <classes>
             <class name="po.test.AdditionTest"/>
             <class name="po.test.MultiplicationTest"/>
+            <class name="po.test.DivisionTest"/>
         </classes>
     </test>
 </suite>

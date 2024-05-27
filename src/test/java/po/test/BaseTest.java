@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import po.CalculatorPage;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -21,6 +23,14 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.get("https://www.theonlinecalculator.com/");
     }
+
+    @AfterMethod
+    public void clear(){
+        CalculatorPage calculatorPage = new CalculatorPage(driver);
+        calculatorPage.clear();
+    }
+
+
 
     @AfterClass
     public void teardown() {

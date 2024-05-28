@@ -36,7 +36,10 @@ on:
         default: 'RegressionTestSuite'
         type: choice
         options:
+          - 'AdditionTestSuite'
+          - 'MultiplicationTestSuite'
           - 'RegressionTestSuite'
+          - 'SubtractionTestSuite'
 
 jobs:
   build:

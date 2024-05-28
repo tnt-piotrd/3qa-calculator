@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.util.Strings;
 import po.CalculatorPage;
 
 public class BaseTest {
@@ -14,10 +15,16 @@ public class BaseTest {
 
     @BeforeClass
     public void setup() {
+        String resolution = System.getProperty("resolution");
+        if (Strings.isNullOrEmpty(resolution)) {
+            resolution = "1920,1080";
+        }
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments(
-                "--headless", "--window-size=1920,1200", "--ignore-certificate-errors");
+                "--headless",
+                "--window-size=%s".formatted(resolution),
+                "--ignore-certificate-errors");
         Capabilities cap = options;
 
         driver = new ChromeDriver(options);

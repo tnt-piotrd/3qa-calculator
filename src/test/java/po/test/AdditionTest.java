@@ -8,10 +8,10 @@ import po.CalculatorPage;
 public class AdditionTest extends BaseTest {
     @DataProvider(name = "Numbers")
     public Object[][] dataProvider() {
-        return new Object[][]{
-                {"1", "3", "4"},
-                {"4", "0", "4"},
-                {"0", "0", "0"},
+        return new Object[][] {
+            {"1", "3", "4"},
+            {"4", "0", "4"},
+            {"0", "0", "0"},
         };
     }
 

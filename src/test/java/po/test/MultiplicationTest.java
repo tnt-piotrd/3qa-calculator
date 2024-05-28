@@ -8,10 +8,10 @@ import po.CalculatorPage;
 public class MultiplicationTest extends BaseTest {
     @DataProvider(name = "Numbers")
     public Object[][] dataProvider() {
-        return new Object[][]{
-                {"100", "0", "0"},
-                {"0", "100", "0"},
-                {"450", "2", "900"},
+        return new Object[][] {
+            {"100", "0", "0"},
+            {"0", "100", "0"},
+            {"450", "2", "900"},
         };
     }
 

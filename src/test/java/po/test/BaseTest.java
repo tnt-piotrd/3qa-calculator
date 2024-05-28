@@ -25,7 +25,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void clear(){
+    public void clear() {
         CalculatorPage calculatorPage = new CalculatorPage(driver);
         calculatorPage.clear();
     }

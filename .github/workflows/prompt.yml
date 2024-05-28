@@ -1,0 +1,61 @@
+name: Tests on demand
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser'
+        required: true
+        default: 'chrome'
+        type: choice
+        options:
+          - chrome
+          - firefox
+          - edge
+      resolution:
+        description: 'Browser resolution'
+        required: true
+        default: "1920,1080"
+        type: choice
+        options:
+          - "1920,1080"
+          - "1280,720"
+          - "1024,768"
+      environment:
+        description: 'Environment'
+        required: true
+        default: 'stage'
+        type: choice
+        options:
+          - stage
+          - uat
+          - prod
+      testSuite:
+        description: 'Test Suite to execute'
+        required: true
+        default: 'RegressionTestSuite'
+        type: choice
+        options:
+          - 'RegressionTestSuite'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: markhobson/maven-chrome
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Run Test Suite
+        run: mvn test -DtestSuite=${{inputs.testSuite}} -Dresolution=${{inputs.resolution}} -Dbrowser=${{inputs.browser}} -Denv=${{inputs.environment}}
+      - name: Archive test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: target/surefire-reports
